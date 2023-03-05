@@ -1,9 +1,10 @@
 package com.oop442.project.auth;
 
 import com.oop442.project.config.JwtService;
-import com.oop442.project.user.Role;
-import com.oop442.project.user.User;
-import com.oop442.project.user.UserRepository;
+import com.oop442.project.entity.Role;
+import com.oop442.project.entity.User;
+import com.oop442.project.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -51,4 +52,50 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .build();
     }
+
+        public Object changePassword(ChangePasswordRequest request) {
+        var user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow();
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse
+                .builder()
+                .token(jwtToken)
+                .build();
+        }
+
+        public AuthenticationResponse registerAdmin(RegisterRequest request) {
+                var user = User
+                .builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.ADMIN)
+                .build();
+        userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse
+                .builder()
+                .token(jwtToken)
+                .build();
+        }
+
+        public AuthenticationResponse registerApprover(RegisterRequest request) {
+                var user = User
+                .builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.APPROVER)
+                .build();
+        userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse
+                .builder()
+                .token(jwtToken)
+                .build();
+        }
 }

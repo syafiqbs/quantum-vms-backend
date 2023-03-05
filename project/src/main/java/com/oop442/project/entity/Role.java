@@ -1,4 +1,4 @@
-package com.oop442.project.user;
+package com.oop442.project.entity;
 
 public enum Role {
     USER,
