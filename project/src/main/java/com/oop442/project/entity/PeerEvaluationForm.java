@@ -12,8 +12,7 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "vendor_assessment_form")
-public class VendorAssessmentForm{
+public class PeerEvaluationForm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,12 +27,9 @@ public class VendorAssessmentForm{
     private String formLocation;
     private String formLink;
     private String formLinkText;
-    
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User vendor;
 
-    public VendorAssessmentForm(User vendor) {
-        this.vendor = vendor;
-    }
 }
