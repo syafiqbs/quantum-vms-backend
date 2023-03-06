@@ -24,12 +24,14 @@ public class SecurityConfig {
             .csrf()
             .disable()
             .authorizeHttpRequests()
-            .requestMatchers("/api/v1/auth/user/**", "/api/v1/auth/admin/**", "/api/v1/admin/**", "/api/v1/user/**")
+            .requestMatchers("/api/v1/auth/user/**")
             .permitAll()
-            // .requestMatchers("/api/v1/auth/admin/**")
-            // .hasRole("ADMIN")
-            // .anyRequest()
-            // .authenticated()
+            .requestMatchers("/api/v1/auth/admin/**", "/api/v1/admin/**", "/api/v1/approver/**")
+            .hasAnyAuthority("ADMIN", "APPROVER")
+            .requestMatchers("/api/v1/approver/**")
+            .hasAnyAuthority("APPROVER")
+            .anyRequest()
+            .authenticated()
             .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -37,8 +39,6 @@ public class SecurityConfig {
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
             
-
-
         return http.build();
     }
 }
