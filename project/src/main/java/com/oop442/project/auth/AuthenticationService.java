@@ -3,7 +3,7 @@ package com.oop442.project.auth;
 import com.oop442.project.config.JwtService;
 import com.oop442.project.entity.Role;
 import com.oop442.project.entity.User;
-import com.oop442.project.repository.UserRepository;
+import com.oop442.project.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -29,7 +29,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        userRepository.save(user);
+        userService.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
@@ -44,7 +44,7 @@ public class AuthenticationService {
                     request.getPassword()
             )
         );
-        var user = userRepository.findByEmail(request.getEmail())
+        var user = userService.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
@@ -54,10 +54,10 @@ public class AuthenticationService {
     }
 
         public Object changePassword(ChangePasswordRequest request) {
-        var user = userRepository.findByEmail(request.getEmail())
+        var user = userService.findByEmail(request.getEmail())
                 .orElseThrow();
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
-        userRepository.save(user);
+        userService.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
@@ -74,7 +74,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ADMIN)
                 .build();
-        userRepository.save(user);
+        userService.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
@@ -91,7 +91,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.APPROVER)
                 .build();
-        userRepository.save(user);
+        userService.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
