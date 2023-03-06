@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oop442.project.entity.PerformanceEvaluationForm;
 import com.oop442.project.entity.User;
-import com.oop442.project.repository.PerformanceEvaluationFormRepository;
-import com.oop442.project.repository.UserRepository;
+import com.oop442.project.service.PerformanceEvaluationFormUser;
+import com.oop442.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1/vendor")
 public class PerformanceEvaluationController {
     
-    private PerformanceEvaluationFormRepository performanceEvaluationFormRepository;
-    private UserRepository userRepository;
+    private PerformanceEvaluationFormUser performanceEvaluationFormRepository;
+    private UserService userRepository;
 
-    public PerformanceEvaluationController(PerformanceEvaluationFormRepository performanceEvaluationFormRepository) {
+    public PerformanceEvaluationController(PerformanceEvaluationFormUser performanceEvaluationFormRepository) {
         this.performanceEvaluationFormRepository = performanceEvaluationFormRepository;
     }
 

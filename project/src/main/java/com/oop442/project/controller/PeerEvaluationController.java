@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oop442.project.entity.PeerEvaluationForm;
 import com.oop442.project.entity.User;
-import com.oop442.project.repository.PeerEvaluationFormRepository;
-import com.oop442.project.repository.UserRepository;
+import com.oop442.project.service.PeerEvaluationFormService;
+import com.oop442.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1/vendor")
 public class PeerEvaluationController{
 
-    private PeerEvaluationFormRepository peerEvaluationFormRepository;
-    private UserRepository userRepository;
+    private PeerEvaluationFormService peerEvaluationFormRepository;
+    private UserService userRepository;
 
-    public PeerEvaluationController(PeerEvaluationFormRepository peerEvaluationFormRepository) {
+    public PeerEvaluationController(PeerEvaluationFormService peerEvaluationFormRepository) {
         this.peerEvaluationFormRepository = peerEvaluationFormRepository;
     }
 

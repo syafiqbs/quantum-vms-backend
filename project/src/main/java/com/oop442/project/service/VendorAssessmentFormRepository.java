@@ -1,4 +1,4 @@
-package com.oop442.project.repository;
+package com.oop442.project.service;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

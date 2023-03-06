@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oop442.project.entity.User;
 import com.oop442.project.entity.VendorAssessmentForm;
-import com.oop442.project.repository.UserRepository;
-import com.oop442.project.repository.VendorAssessmentFormRepository;
+import com.oop442.project.service.UserService;
+import com.oop442.project.service.VendorAssessmentFormRepository;
 
 @RestController
 @RequestMapping("/api/v1/vendor")
 public class VendorAssessmentController {
 
     private VendorAssessmentFormRepository vendorAssessmentFormRepository;
-    private UserRepository userRepository;
+    private UserService userRepository;
 
     public VendorAssessmentController(VendorAssessmentFormRepository vendorAssessmentFormRepository) {
         this.vendorAssessmentFormRepository = vendorAssessmentFormRepository;
