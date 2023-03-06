@@ -11,17 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oop442.project.entity.User;
 import com.oop442.project.service.UserService;
-import com.oop442.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1/admin")
 public class UserController {
 
+    @Autowired
     private UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @DeleteMapping("/deleteUser")
     public ResponseEntity<Object> deleteUser(@RequestBody User user) {
