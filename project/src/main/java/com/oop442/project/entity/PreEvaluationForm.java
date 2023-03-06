@@ -1,5 +1,7 @@
 package com.oop442.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,9 +19,15 @@ public class PreEvaluationForm extends Form{
     private Long id;
 
     @OneToOne(mappedBy = "preEvaluationForm")
+    @JsonBackReference
     private User user;
 
     private String preEvaluationResults;
+
+    public PreEvaluationForm() {
+        super(null, null);
+        this.preEvaluationResults = "false";
+    }
 
     @Builder(builderMethodName = "preEvaluationFormBuilder")
     public PreEvaluationForm(String companyName, String companyAddress, String preEvaluationResults) {

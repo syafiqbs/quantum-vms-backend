@@ -9,6 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -32,14 +34,17 @@ public class User implements UserDetails {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vendor_assessment_form_id", referencedColumnName = "id")
+    @JsonManagedReference
     private VendorAssessmentForm vendorAssessmentForm;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pre_evaluation_form_id", referencedColumnName = "id")
+    @JsonManagedReference
     private PreEvaluationForm preEvaluationForm;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "performance_evaluation_form_id", referencedColumnName = "id")
+    @JsonManagedReference
     private PerformanceEvaluationForm performanceEvaluationForm;
 
     @Override
