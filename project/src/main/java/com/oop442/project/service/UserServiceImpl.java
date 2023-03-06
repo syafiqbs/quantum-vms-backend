@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Object delete(User user) {
-        User userToDelete = userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UserNotFoundException(user.getEmail()));
+    public Object delete(String email) {
+        User userToDelete = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
         userRepository.delete(userToDelete);
         return userToDelete;
     }

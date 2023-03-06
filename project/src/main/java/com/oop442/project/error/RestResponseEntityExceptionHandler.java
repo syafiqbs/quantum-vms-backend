@@ -19,6 +19,20 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
+    @ExceptionHandler(VendorAssessmentFormNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorMessage handleVendorAssessmentFormNotFoundException(VendorAssessmentFormNotFoundException ex) {
+        return new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+    
+    @ExceptionHandler(PerformanceEvaluationFormNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorMessage handlePerformanceEvaluationFormNotFoundException(PerformanceEvaluationFormNotFoundException ex) {
+        return new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+    
     @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

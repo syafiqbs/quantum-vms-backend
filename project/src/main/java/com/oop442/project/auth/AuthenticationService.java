@@ -1,8 +1,11 @@
 package com.oop442.project.auth;
 
 import com.oop442.project.config.JwtService;
+import com.oop442.project.entity.PerformanceEvaluationForm;
+import com.oop442.project.entity.PreEvaluationForm;
 import com.oop442.project.entity.Role;
 import com.oop442.project.entity.User;
+import com.oop442.project.entity.VendorAssessmentForm;
 import com.oop442.project.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,6 +24,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        
         var user = User
                 .builder()
                 .firstName(request.getFirstName())
@@ -30,7 +34,29 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
+        var vendorAssessmentForm = VendorAssessmentForm
+                .builder()
+                .vendorAssessmentResults("false")
+                .build();
+
+        var performanceEvaluationForm = PerformanceEvaluationForm
+                .builder()
+                .performanceEvaluationResults("false")
+                .build();
+        
+        var preEvaluationForm = PreEvaluationForm
+                .builder()
+                .preEvaluationResults("false")
+                .build();
+        
+        preEvaluationForm.setUser(user);
+        performanceEvaluationForm.setUser(user);
+        vendorAssessmentForm.setUser(user);
+        user.setPerformanceEvaluationForm(performanceEvaluationForm);
+        user.setPreEvaluationForm(preEvaluationForm);
+        user.setVendorAssessmentForm(vendorAssessmentForm);
         userRepository.save(user);
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()

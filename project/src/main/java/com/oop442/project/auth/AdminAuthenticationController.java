@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oop442.project.controller.VendorAssessmentFormController;
+
 @RestController
 @RequestMapping("/api/v1/auth/admin")
 @RequiredArgsConstructor
@@ -18,6 +20,7 @@ public class AdminAuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
         @RequestBody RegisterRequest request
     ) {
+
         return ResponseEntity.ok(service.register(request));
     }
 

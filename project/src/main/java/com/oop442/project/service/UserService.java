@@ -9,5 +9,5 @@ public interface UserService {
 
     User update(User user);
 
-    Object delete(User user);
+    Object delete(String email);
 }

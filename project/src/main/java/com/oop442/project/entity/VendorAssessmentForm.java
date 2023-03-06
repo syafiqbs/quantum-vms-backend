@@ -8,6 +8,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Builder
 @DiscriminatorValue("VendorAssessmentForm")
 public class VendorAssessmentForm extends Form{
 

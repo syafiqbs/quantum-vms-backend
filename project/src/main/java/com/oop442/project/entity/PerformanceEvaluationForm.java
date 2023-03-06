@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @DiscriminatorValue("PerformanceEvaluationForm")
+@Builder
 public class PerformanceEvaluationForm extends Form{
 
     @Id
