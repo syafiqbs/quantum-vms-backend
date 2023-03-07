@@ -14,9 +14,9 @@ import lombok.Setter;
 @Builder
 public class PreEvaluationForm extends Form{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    // private Long id;
 
     @OneToOne(mappedBy = "preEvaluationForm")
     @JsonBackReference

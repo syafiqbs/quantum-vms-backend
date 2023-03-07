@@ -13,9 +13,9 @@ import lombok.Setter;
 @Builder
 @DiscriminatorValue("VendorAssessmentForm")
 public class VendorAssessmentForm extends Form{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    // private Long id;
 
     @OneToOne(mappedBy = "vendorAssessmentForm")
     @JsonBackReference
