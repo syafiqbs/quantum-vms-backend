@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -24,10 +25,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
     private String email;
     private String password;
+    private String name;
+    private String contactNumber;
+    @Builder.Default
+    private Date dateCreated = new Date();
+    
 
     @Enumerated(EnumType.STRING)
     private Role role;

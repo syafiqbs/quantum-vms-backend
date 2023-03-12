@@ -27,9 +27,9 @@ public class AuthenticationService {
         
         var user = User
                 .builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
                 .email(request.getEmail())
+                .name(request.getName())
+                .contactNumber(request.getContactNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
@@ -76,6 +76,9 @@ public class AuthenticationService {
         public Object changePassword(ChangePasswordRequest request) {
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
+            throw new IllegalStateException("Old password is incorrect");
+        }
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
@@ -88,9 +91,9 @@ public class AuthenticationService {
         public AuthenticationResponse registerAdmin(RegisterRequest request) {
         var user = User
                 .builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
                 .email(request.getEmail())
+                .name(request.getName())
+                .contactNumber(request.getContactNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ADMIN)
                 .build();
@@ -108,9 +111,9 @@ public class AuthenticationService {
         public AuthenticationResponse registerApprover(RegisterRequest request) {
                 var user = User
                 .builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
                 .email(request.getEmail())
+                .name(request.getName())
+                .contactNumber(request.getContactNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.APPROVER)
                 .build();

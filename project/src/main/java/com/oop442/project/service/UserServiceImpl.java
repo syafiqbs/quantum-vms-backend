@@ -29,8 +29,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public User update(User user) {
         User userToUpdate = userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UserNotFoundException(user.getEmail()));
-        userToUpdate.setFirstName(user.getFirstName());
-        userToUpdate.setLastName(user.getLastName());
+        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setName(user.getName());
+        userToUpdate.setContactNumber(user.getContactNumber());
         userRepository.save(userToUpdate);
         return userToUpdate;
         
