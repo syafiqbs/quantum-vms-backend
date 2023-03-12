@@ -5,16 +5,12 @@ import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.oop442.project.entity.EmailDetails;
 import com.oop442.project.error.EmailNotSendException;
 
-import jakarta.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
 
 @Service
 public class EmailServiceImpl implements EmailService{

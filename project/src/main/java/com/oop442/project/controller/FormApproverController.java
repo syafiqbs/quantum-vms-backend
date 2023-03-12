@@ -1,7 +1,9 @@
 package com.oop442.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,18 +24,18 @@ public class FormApproverController {
     @Autowired
     private PreEvaluationFormService preEvaluationFormService;
 
-    @PostMapping("/approvePerformanceEvaluationForm")
-    public Object approvePerformanceEvaluationForm(Long id) {
+    @PostMapping("/approvePerformanceEvaluationForm/{id}")
+    public Object approvePerformanceEvaluationForm(@PathVariable Long id) {
         return performanceEvaluationFormService.approvePerformanceEvaluationForm(id);
     }
 
-    @PostMapping("/approveVendorAssessmentForm")
-    public Object approveVendorAssessmentForm(Long id) {
+    @PostMapping("/approveVendorAssessmentForm/{id}")
+    public Object approveVendorAssessmentForm(@PathVariable Long id) {
         return vendorAssessmentFormService.approveVendorAssessmentForm(id);
     }
 
-    @PostMapping("/approvePreEvaluationForm")
-    public Object approvePreEvaluationForm(Long id) {
+    @PostMapping("/approvePreEvaluationForm/{id}")
+    public Object approvePreEvaluationForm(@PathVariable Long id) {
         return preEvaluationFormService.approvePreEvaluationForm(id);
     }
 
