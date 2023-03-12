@@ -34,8 +34,8 @@ public class PreEvaluationFormController {
         return ResponseEntity.ok(preEvaluationFormService.updatePreEvaluationForm(preEvaluationForm));
     }
 
-    @DeleteMapping("/deletePreEvaluationForm")
-    public ResponseEntity<Object> deletePreEvaluationForm(@RequestBody PreEvaluationForm preEvaluationForm) {
-        return ResponseEntity.ok(preEvaluationFormService.deletePreEvaluationForm(preEvaluationForm.getId()));
-    }
+    // @DeleteMapping("/deletePreEvaluationForm")
+    // public ResponseEntity<Object> deletePreEvaluationForm(@RequestBody PreEvaluationForm preEvaluationForm) {
+    //     return ResponseEntity.ok(preEvaluationFormService.deletePreEvaluationForm(preEvaluationForm.getId()));
+    // }
 }

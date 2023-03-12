@@ -34,8 +34,8 @@ public class PerformanceEvaluationFormController {
         return ResponseEntity.ok(performanceEvaluationFormService.updatePerformanceEvaluationForm(performanceEvaluationForm));
     }
 
-    @DeleteMapping("/deletePerformanceEvaluationForm")
-    public ResponseEntity<Object> deletePerformanceEvaluationForm(@RequestBody PerformanceEvaluationForm performanceEvaluationForm) {
-        return ResponseEntity.ok(performanceEvaluationFormService.deletePerformanceEvaluationForm(performanceEvaluationForm.getId()));
-    }
+    // @DeleteMapping("/deletePerformanceEvaluationForm")
+    // public ResponseEntity<Object> deletePerformanceEvaluationForm(@RequestBody PerformanceEvaluationForm performanceEvaluationForm) {
+    //     return ResponseEntity.ok(performanceEvaluationFormService.deletePerformanceEvaluationForm(performanceEvaluationForm.getId()));
+    // }
 }

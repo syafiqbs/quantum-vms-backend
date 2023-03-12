@@ -34,8 +34,8 @@ public class VendorAssessmentFormController {
         return ResponseEntity.ok(vendorAssessmentFormService.updateVendorAssessmentForm(vendorAssessmentForm));
     }
 
-    @DeleteMapping("/deleteVendorAssessmentForm")
-    public ResponseEntity<Object> deleteVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
-        return ResponseEntity.ok(vendorAssessmentFormService.deleteVendorAssessmentForm(vendorAssessmentForm.getId()));
-    }
+    // @DeleteMapping("/deleteVendorAssessmentForm")
+    // public ResponseEntity<Object> deleteVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
+    //     return ResponseEntity.ok(vendorAssessmentFormService.deleteVendorAssessmentForm(vendorAssessmentForm.getId()));
+    // }
 }

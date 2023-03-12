@@ -10,7 +10,7 @@ public interface PerformanceEvaluationFormService {
 
     Object updatePerformanceEvaluationForm(PerformanceEvaluationForm performanceEvaluationForm);
 
-    Object deletePerformanceEvaluationForm(Long id);
+    // Object deletePerformanceEvaluationForm(Long id);
 
     Object approvePerformanceEvaluationForm(Long id);
 }

@@ -10,7 +10,7 @@ public interface VendorAssessmentFormService {
 
     Object updateVendorAssessmentForm(VendorAssessmentForm vendorAssessmentForm);
 
-    Object deleteVendorAssessmentForm(Long id);
+    // Object deleteVendorAssessmentForm(Long id);
 
     Object approveVendorAssessmentForm(Long id);
 

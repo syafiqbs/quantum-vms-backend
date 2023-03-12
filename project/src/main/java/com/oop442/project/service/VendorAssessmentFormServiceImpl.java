@@ -1,5 +1,7 @@
 package com.oop442.project.service;
 
+import java.lang.reflect.Field;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,18 +28,26 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
     @Override
     public Object updateVendorAssessmentForm(VendorAssessmentForm vendorAssessmentForm) {
         VendorAssessmentForm vendorAssessmentFormToUpdate = vendorAssessmentFormRepository.findById(vendorAssessmentForm.getId()).orElseThrow(() -> new VendorAssessmentFormNotFoundException(vendorAssessmentForm.getId()));
-        
+        Field[] fields = VendorAssessmentForm.class.getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                if (field.get(vendorAssessmentForm) != null) {
+                    field.set(vendorAssessmentFormToUpdate, field.get(vendorAssessmentForm));
+                }
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                throw new RuntimeException("Error while updating Vendor Assessment Form");
+            }
+        }
         return vendorAssessmentFormRepository.save(vendorAssessmentFormToUpdate);
     }
 
-    @Override
-    public Object deleteVendorAssessmentForm(Long id) {
-
-        VendorAssessmentForm vendorAssessmentFormToDelete = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
-
-        vendorAssessmentFormRepository.delete(vendorAssessmentFormToDelete);
-        return "VendorAssessmentForm deleted with id: " + id;
-    }
+    // @Override
+    // public Object deleteVendorAssessmentForm(Long id) {
+    //     VendorAssessmentForm vendorAssessmentFormToDelete = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
+    //     vendorAssessmentFormRepository.delete(vendorAssessmentFormToDelete);
+    //     return "VendorAssessmentForm deleted with id: " + id;
+    // }
 
     @Override
     public Object approveVendorAssessmentForm(Long id) {
