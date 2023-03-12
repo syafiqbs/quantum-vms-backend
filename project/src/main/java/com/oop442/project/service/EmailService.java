@@ -4,5 +4,5 @@ import com.oop442.project.entity.EmailDetails;
 
 public interface EmailService {
     String sendSimpleMail(EmailDetails details);
-    String sendMailWithAttachment(EmailDetails details);
+    // String sendMailWithAttachment(EmailDetails details);
 }

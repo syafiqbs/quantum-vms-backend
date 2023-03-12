@@ -35,42 +35,40 @@ public class EmailServiceImpl implements EmailService{
             mailMessage.setSubject(details.getSubject());
 
             javaMailSender.send(mailMessage);
-            return "Mail Sent Successfully...";
+            return "Email has been send to : " + details.getRecipient();
         } catch (Exception e) {
             throw new EmailNotSendException(details.getRecipient());
         }
     }
 
-    public String sendMailWithAttachment(EmailDetails details) {
-        MimeMessage mimeMessage
-            = javaMailSender.createMimeMessage();
-        MimeMessageHelper mimeMessageHelper;
+    // public String sendMailWithAttachment(EmailDetails details) {
+    //     MimeMessage mimeMessage
+    //         = javaMailSender.createMimeMessage();
+    //     MimeMessageHelper mimeMessageHelper;
  
-        try {
+    //     try {
+    //         // Setting multipart as true for attachments to
+    //         // be send
+    //         mimeMessageHelper
+    //             = new MimeMessageHelper(mimeMessage, true);
+    //         mimeMessageHelper.setFrom(sender);
+    //         mimeMessageHelper.setTo(details.getRecipient());
+    //         mimeMessageHelper.setText(details.getMsgBody());
+    //         mimeMessageHelper.setSubject(
+    //             details.getSubject());
+    //         // Adding the attachment
+    //         FileSystemResource file
+    //             = new FileSystemResource(
+    //                 new File(details.getAttachment()));
  
-            // Setting multipart as true for attachments to
-            // be send
-            mimeMessageHelper
-                = new MimeMessageHelper(mimeMessage, true);
-            mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo(details.getRecipient());
-            mimeMessageHelper.setText(details.getMsgBody());
-            mimeMessageHelper.setSubject(
-                details.getSubject());
- 
-            // Adding the attachment
-            FileSystemResource file
-                = new FileSystemResource(
-                    new File(details.getAttachment()));
- 
-            mimeMessageHelper.addAttachment(
-                file.getFilename(), file);
+    //         mimeMessageHelper.addAttachment(
+    //             file.getFilename(), file);
             
-            // Sending the mail
-            javaMailSender.send(mimeMessage);
-            return "Mail Sent Successfully...";
-        } catch (Exception e) {
-            throw new EmailNotSendException(details.getRecipient());
-        }
-    }
+    //         // Sending the mail
+    //         javaMailSender.send(mimeMessage);
+    //         return "Email has been send to : " + details.getRecipient();
+    //     } catch (Exception e) {
+    //         throw new EmailNotSendException(details.getRecipient());
+    //     }
+    // }
 }
