@@ -3,9 +3,9 @@ package com.oop442.project.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@MappedSuperclass
 @Data
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@MappedSuperclass
 @DiscriminatorColumn(name = "form_type", discriminatorType = DiscriminatorType.STRING)
 public class Form {
     
