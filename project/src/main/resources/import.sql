@@ -1,1 +1,0 @@
--- INSERT INTO `user` VALUES (1, 'admin@admin.com', 'FNAdmin', 'LNAdmin', '$2a$10$Jw/pKkihLbACN6mXs7SFnOV2VrIKgmd8CHhtvRTk5fQvDU3Agn/Za', 'ADMIN', NULL, NULL, NULL);
