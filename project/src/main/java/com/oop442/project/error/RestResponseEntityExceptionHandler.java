@@ -39,6 +39,13 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public ErrorMessage handlePreEvaluationFormNotFoundException(PreEvaluationFormNotFoundException ex) {
         return new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
     }
+
+    @ExceptionHandler(EmailNotSendException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage handleEmailNotSendException(EmailNotSendException ex) {
+        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+    }
     
     @ExceptionHandler(Exception.class)
     @ResponseBody

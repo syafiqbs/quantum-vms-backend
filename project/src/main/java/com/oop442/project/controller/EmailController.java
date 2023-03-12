@@ -1,6 +1,7 @@
 package com.oop442.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +18,12 @@ public class EmailController {
     private EmailService emailService;
 
     @PostMapping("/sendEmail")
-    public String sendEmail(@RequestBody EmailDetails emailDetails) {
-        String status = emailService.sendSimpleMail(emailDetails);
-        return status;
+    public ResponseEntity<Object> sendEmail(@RequestBody EmailDetails emailDetails) {
+        return ResponseEntity.ok(emailService.sendSimpleMail(emailDetails));
     }
 
     @PostMapping("/sendEmailWithAttachment")
-    public String sendEmailWithAttachment(@RequestBody EmailDetails emailDetails) {
-        String status = emailService.sendMailWithAttachment(emailDetails);
-        return status;
+    public ResponseEntity<Object> sendEmailWithAttachment(@RequestBody EmailDetails emailDetails) {
+        return ResponseEntity.ok(emailService.sendMailWithAttachment(emailDetails));
     }
 }
