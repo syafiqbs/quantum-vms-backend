@@ -1,5 +1,5 @@
 # OOP442 (G3T4)
-# Done by: Andy
+# Done by: Andy, Christine, Syafiq, Ryan, Yin Kit, Zhi Yi
 
 # Table of contents
 - [Project Description](#project-description)
