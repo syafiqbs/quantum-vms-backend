@@ -13,18 +13,18 @@
 This system aims to help the vendors, administrators and approvers have an all-in-one stop in regards to their form approvals.
 
 # Technologies
-Language : Java
-Project : Maven
-Spring Boot : 3.0.1
+1. Language : Java
+2. Project : Maven
+3. Spring Boot : 3.0.1
 
 # Dependencies
-JSON Web Token
-Lombok
-MySQL Driver
-Spring Data JPA
-Spring Dotenv
-Spring Security
-Spring Web
+1. JSON Web Token
+2. Lombok
+3. MySQL Driver
+4. Spring Data JPA
+5. Spring Dotenv
+6. Spring Security
+7. Spring Web
 
 # Installation
 1. Download and install WAMP/MAMP for Windows/Mac users respectively. Visit https://www.wampserver.com/en/download-wampserver-64bits/ for WAMP and https://www.mamp.info/en/downloads/ for MAMP.
