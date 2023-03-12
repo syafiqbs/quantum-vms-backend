@@ -39,7 +39,9 @@ public class AuthenticationService {
         var performanceEvaluationForm = new PerformanceEvaluationForm();
         
         var preEvaluationForm = new PreEvaluationForm();
-        
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+                throw new IllegalStateException("Email already taken");
+        }
         preEvaluationForm.setUser(user);
         performanceEvaluationForm.setUser(user);
         vendorAssessmentForm.setUser(user);
@@ -84,7 +86,7 @@ public class AuthenticationService {
         }
 
         public AuthenticationResponse registerAdmin(RegisterRequest request) {
-                var user = User
+        var user = User
                 .builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -92,6 +94,9 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ADMIN)
                 .build();
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new IllegalStateException("Email already taken");
+        }
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
@@ -109,6 +114,9 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.APPROVER)
                 .build();
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+                throw new IllegalStateException("Email already taken");
+        }
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
