@@ -26,4 +26,3 @@ spring:
             enable: true
 jwt:
   secret: ${JWT_SECRET}
-

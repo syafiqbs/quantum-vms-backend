@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### application.yml ###
-!**/src/main/**/application.yml
+**/src/main/**/application.yml
 
 ### .env ###
 .env
