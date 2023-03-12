@@ -30,6 +30,8 @@ public class SecurityConfig {
             .hasAnyAuthority("ADMIN", "APPROVER")
             .requestMatchers("/api/v1/approver/**")
             .hasAnyAuthority("APPROVER")
+            // .requestMatchers("/api/v1/admin/**", "/api/v1/auth/admin/**", "/api/v1/auth/user/**", "/api/v1/approver/**", "/api/v1/user/**")
+            // .permitAll()
             .anyRequest()
             .authenticated()
             .and()
