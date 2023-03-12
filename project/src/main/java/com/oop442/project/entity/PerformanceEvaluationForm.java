@@ -11,7 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @DiscriminatorValue("PerformanceEvaluationForm")
-@Builder
 public class PerformanceEvaluationForm extends Form{
 
     // @Id
@@ -25,7 +24,7 @@ public class PerformanceEvaluationForm extends Form{
     private String performanceEvaluationResults;
 
     public PerformanceEvaluationForm() {
-        super(null, null);
+        super("null", "null");
         this.performanceEvaluationResults = "false";
     }
 

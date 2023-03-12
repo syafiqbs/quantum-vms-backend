@@ -11,7 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @DiscriminatorValue("PreEvaluationForm")
-@Builder
 public class PreEvaluationForm extends Form{
 
     // @Id

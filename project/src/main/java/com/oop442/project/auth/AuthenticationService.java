@@ -34,20 +34,11 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
-        var vendorAssessmentForm = VendorAssessmentForm
-                .builder()
-                .vendorAssessmentResults("false")
-                .build();
+        var vendorAssessmentForm = new VendorAssessmentForm();
 
-        var performanceEvaluationForm = PerformanceEvaluationForm
-                .builder()
-                .performanceEvaluationResults("false")
-                .build();
+        var performanceEvaluationForm = new PerformanceEvaluationForm();
         
-        var preEvaluationForm = PreEvaluationForm
-                .builder()
-                .preEvaluationResults("false")
-                .build();
+        var preEvaluationForm = new PreEvaluationForm();
         
         preEvaluationForm.setUser(user);
         performanceEvaluationForm.setUser(user);
