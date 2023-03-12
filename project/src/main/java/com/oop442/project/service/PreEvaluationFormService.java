@@ -12,4 +12,6 @@ public interface PreEvaluationFormService {
 
     Object deletePreEvaluationForm(Long id);
 
+    Object approvePreEvaluationForm(Long id);
+
 }

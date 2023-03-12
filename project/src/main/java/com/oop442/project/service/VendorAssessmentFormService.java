@@ -12,4 +12,6 @@ public interface VendorAssessmentFormService {
 
     Object deleteVendorAssessmentForm(Long id);
 
+    Object approveVendorAssessmentForm(Long id);
+
 }

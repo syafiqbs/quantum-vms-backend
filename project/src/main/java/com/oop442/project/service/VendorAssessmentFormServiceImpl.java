@@ -28,7 +28,6 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
         VendorAssessmentForm vendorAssessmentFormToUpdate = vendorAssessmentFormRepository.findById(vendorAssessmentForm.getId()).orElseThrow(() -> new VendorAssessmentFormNotFoundException(vendorAssessmentForm.getId()));
         vendorAssessmentFormToUpdate.setCompanyAddress(vendorAssessmentForm.getCompanyAddress());
         vendorAssessmentFormToUpdate.setCompanyName(vendorAssessmentForm.getCompanyName());
-        vendorAssessmentFormToUpdate.setVendorAssessmentResults(vendorAssessmentForm.getVendorAssessmentResults());
         
         return vendorAssessmentFormRepository.save(vendorAssessmentFormToUpdate);
     }
@@ -40,6 +39,13 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
 
         vendorAssessmentFormRepository.delete(vendorAssessmentFormToDelete);
         return "VendorAssessmentForm deleted with id: " + id;
+    }
+
+    @Override
+    public Object approveVendorAssessmentForm(Long id) {
+        VendorAssessmentForm vendorAssessmentFormToApprove = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
+        vendorAssessmentFormToApprove.setVendorAssessmentResults("true");
+        return vendorAssessmentFormRepository.save(vendorAssessmentFormToApprove);
     }
 
     

@@ -28,7 +28,6 @@ public class PerformanceEvaluationFormServiceImpl implements PerformanceEvaluati
         PerformanceEvaluationForm performanceEvaluationFormToUpdate = performanceEvaluationFormRepository.findById(performanceEvaluationForm.getId()).orElseThrow(() -> new PerformanceEvaluationFormNotFoundException(performanceEvaluationForm.getId()));
         performanceEvaluationFormToUpdate.setCompanyAddress(performanceEvaluationForm.getCompanyAddress());
         performanceEvaluationFormToUpdate.setCompanyName(performanceEvaluationForm.getCompanyName());
-        performanceEvaluationFormToUpdate.setPerformanceEvaluationResults(performanceEvaluationForm.getPerformanceEvaluationResults());
 
         return performanceEvaluationFormRepository.save(performanceEvaluationFormToUpdate);
     }
@@ -39,5 +38,13 @@ public class PerformanceEvaluationFormServiceImpl implements PerformanceEvaluati
         performanceEvaluationFormRepository.delete(performanceEvaluationFormToDelete);
         return "Performance Evaluation Form with id " + id + " deleted";
     }
+
+    @Override
+    public Object approvePerformanceEvaluationForm(Long id) {
+        PerformanceEvaluationForm performanceEvaluationFormToApprove = performanceEvaluationFormRepository.findById(id).orElseThrow(() -> new PerformanceEvaluationFormNotFoundException(id));
+        performanceEvaluationFormToApprove.setPerformanceEvaluationResults("true");
+        return performanceEvaluationFormRepository.save(performanceEvaluationFormToApprove);
+    }
+
     
 }
