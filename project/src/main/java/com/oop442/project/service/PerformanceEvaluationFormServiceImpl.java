@@ -26,8 +26,7 @@ public class PerformanceEvaluationFormServiceImpl implements PerformanceEvaluati
     @Override
     public Object updatePerformanceEvaluationForm(PerformanceEvaluationForm performanceEvaluationForm) {
         PerformanceEvaluationForm performanceEvaluationFormToUpdate = performanceEvaluationFormRepository.findById(performanceEvaluationForm.getId()).orElseThrow(() -> new PerformanceEvaluationFormNotFoundException(performanceEvaluationForm.getId()));
-        performanceEvaluationFormToUpdate.setCompanyAddress(performanceEvaluationForm.getCompanyAddress());
-        performanceEvaluationFormToUpdate.setCompanyName(performanceEvaluationForm.getCompanyName());
+        
 
         return performanceEvaluationFormRepository.save(performanceEvaluationFormToUpdate);
     }
@@ -42,7 +41,7 @@ public class PerformanceEvaluationFormServiceImpl implements PerformanceEvaluati
     @Override
     public Object approvePerformanceEvaluationForm(Long id) {
         PerformanceEvaluationForm performanceEvaluationFormToApprove = performanceEvaluationFormRepository.findById(id).orElseThrow(() -> new PerformanceEvaluationFormNotFoundException(id));
-        performanceEvaluationFormToApprove.setPerformanceEvaluationResults("true");
+        performanceEvaluationFormToApprove.setPerformanceEvaluationResults("Approved");
         return performanceEvaluationFormRepository.save(performanceEvaluationFormToApprove);
     }
 

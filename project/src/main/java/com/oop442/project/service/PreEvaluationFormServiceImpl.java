@@ -26,8 +26,6 @@ public class PreEvaluationFormServiceImpl implements PreEvaluationFormService{
     @Override
     public Object updatePreEvaluationForm(PreEvaluationForm preEvaluationForm) {
         PreEvaluationForm preEvaluationFormToUpdate = preEvaluationFormRepository.findById(preEvaluationForm.getId()).orElseThrow(() -> new PreEvaluationFormNotFoundException(preEvaluationForm.getId()));
-        preEvaluationFormToUpdate.setCompanyAddress(preEvaluationForm.getCompanyAddress());
-        preEvaluationFormToUpdate.setCompanyName(preEvaluationForm.getCompanyName());
 
         return preEvaluationFormRepository.save(preEvaluationFormToUpdate);
     }
@@ -42,7 +40,7 @@ public class PreEvaluationFormServiceImpl implements PreEvaluationFormService{
     @Override
     public Object approvePreEvaluationForm(Long id) {
         PreEvaluationForm preEvaluationFormToApprove = preEvaluationFormRepository.findById(id).orElseThrow(() -> new PreEvaluationFormNotFoundException(id));
-        preEvaluationFormToApprove.setPreEvaluationResults("true");
+        preEvaluationFormToApprove.setPreEvaluationResults("Approved");
         return preEvaluationFormRepository.save(preEvaluationFormToApprove);
     }
     

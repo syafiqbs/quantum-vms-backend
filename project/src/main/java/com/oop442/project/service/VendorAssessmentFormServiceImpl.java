@@ -26,8 +26,6 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
     @Override
     public Object updateVendorAssessmentForm(VendorAssessmentForm vendorAssessmentForm) {
         VendorAssessmentForm vendorAssessmentFormToUpdate = vendorAssessmentFormRepository.findById(vendorAssessmentForm.getId()).orElseThrow(() -> new VendorAssessmentFormNotFoundException(vendorAssessmentForm.getId()));
-        vendorAssessmentFormToUpdate.setCompanyAddress(vendorAssessmentForm.getCompanyAddress());
-        vendorAssessmentFormToUpdate.setCompanyName(vendorAssessmentForm.getCompanyName());
         
         return vendorAssessmentFormRepository.save(vendorAssessmentFormToUpdate);
     }
@@ -44,7 +42,7 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
     @Override
     public Object approveVendorAssessmentForm(Long id) {
         VendorAssessmentForm vendorAssessmentFormToApprove = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
-        vendorAssessmentFormToApprove.setVendorAssessmentResults("true");
+        vendorAssessmentFormToApprove.setVendorAssessmentResults("Approved");
         return vendorAssessmentFormRepository.save(vendorAssessmentFormToApprove);
     }
 
