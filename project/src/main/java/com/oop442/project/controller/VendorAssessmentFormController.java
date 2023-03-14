@@ -2,6 +2,7 @@ package com.oop442.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,16 +20,19 @@ public class VendorAssessmentFormController {
     @Autowired
     private VendorAssessmentFormService vendorAssessmentFormService;
 
+    @CrossOrigin("*")
     @GetMapping("/getVendorAssessmentForm")
     public ResponseEntity<Object> getVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
         return ResponseEntity.ok(vendorAssessmentFormService.getVendorAssessmentForm(vendorAssessmentForm.getId()));
     }
 
+    @CrossOrigin("*")
     @GetMapping("/getVendorAllAssessmentForms")
     public ResponseEntity<Object> getVendorAllAssessmentForms() {
         return ResponseEntity.ok(vendorAssessmentFormService.getVendorAllAssessmentForms());
     }
 
+    @CrossOrigin("*")
     @PutMapping("/updateVendorAssessmentForm")
     public ResponseEntity<Object> updateVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
         return ResponseEntity.ok(vendorAssessmentFormService.updateVendorAssessmentForm(vendorAssessmentForm));
