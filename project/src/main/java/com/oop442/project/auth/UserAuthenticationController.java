@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/auth/user")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class UserAuthenticationController {
 
     private final AuthenticationService service;
 
-    @CrossOrigin("*")
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
         return ResponseEntity.ok(service.authenticate(request));
     }
-    @CrossOrigin("*")
+
     @PostMapping("/changePassword")
     public ResponseEntity<Object> changePassword(
             @RequestBody ChangePasswordRequest request

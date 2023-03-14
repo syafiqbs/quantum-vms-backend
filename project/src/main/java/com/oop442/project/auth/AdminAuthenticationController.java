@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/auth/admin")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AdminAuthenticationController {
 
     private final AuthenticationService service;
-    @CrossOrigin("*")
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
         @RequestBody RegisterRequest request
@@ -22,14 +22,14 @@ public class AdminAuthenticationController {
 
         return ResponseEntity.ok(service.register(request));
     }
-    @CrossOrigin("*")
+
     @PostMapping("/registerAdmin")
     public ResponseEntity<AuthenticationResponse> registerAdmin(
         @RequestBody RegisterRequest request
     ) {
         return ResponseEntity.ok(service.registerAdmin(request));
     }
-    @CrossOrigin("*")
+
     @PostMapping("/registerApprover")
     public ResponseEntity<AuthenticationResponse> registerApprover(
         @RequestBody RegisterRequest request
