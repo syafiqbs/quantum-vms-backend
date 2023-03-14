@@ -2,7 +2,6 @@ package com.oop442.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,24 +14,22 @@ import com.oop442.project.service.PerformanceEvaluationFormService;
 
 @RestController
 @RequestMapping("/api/v1/vendor")
+@CrossOrigin(origins = "*")
 public class PerformanceEvaluationFormController {
 
     @Autowired
     private PerformanceEvaluationFormService performanceEvaluationFormService;
 
-    @CrossOrigin("*")
     @GetMapping("/getPerformanceEvaluationForm")
     public ResponseEntity<Object> getPerformanceEvaluationForm(@RequestBody PerformanceEvaluationForm performanceEvaluationForm) {
         return ResponseEntity.ok(performanceEvaluationFormService.getPerformanceEvaluationForm(performanceEvaluationForm.getId()));
     }
 
-    @CrossOrigin("*")
     @GetMapping("/getPerformanceAllEvaluationForms")
     public ResponseEntity<Object> getPerformanceAllEvaluationForms() {
         return ResponseEntity.ok(performanceEvaluationFormService.getPerformanceAllEvaluationForms());
     }
     
-    @CrossOrigin("*")
     @PutMapping("/updatePerformanceEvaluationForm")
     public ResponseEntity<Object> updatePerformanceEvaluationForm(@RequestBody PerformanceEvaluationForm performanceEvaluationForm) {
         return ResponseEntity.ok(performanceEvaluationFormService.updatePerformanceEvaluationForm(performanceEvaluationForm));

@@ -15,24 +15,22 @@ import com.oop442.project.service.VendorAssessmentFormService;
 
 @RestController
 @RequestMapping("/api/v1/vendor")
+@CrossOrigin(origins = "*")
 public class VendorAssessmentFormController {
     
     @Autowired
     private VendorAssessmentFormService vendorAssessmentFormService;
 
-    @CrossOrigin("*")
     @GetMapping("/getVendorAssessmentForm")
     public ResponseEntity<Object> getVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
         return ResponseEntity.ok(vendorAssessmentFormService.getVendorAssessmentForm(vendorAssessmentForm.getId()));
     }
 
-    @CrossOrigin("*")
     @GetMapping("/getVendorAllAssessmentForms")
     public ResponseEntity<Object> getVendorAllAssessmentForms() {
         return ResponseEntity.ok(vendorAssessmentFormService.getVendorAllAssessmentForms());
     }
 
-    @CrossOrigin("*")
     @PutMapping("/updateVendorAssessmentForm")
     public ResponseEntity<Object> updateVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
         return ResponseEntity.ok(vendorAssessmentFormService.updateVendorAssessmentForm(vendorAssessmentForm));

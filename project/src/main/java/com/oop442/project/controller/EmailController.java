@@ -13,12 +13,13 @@ import com.oop442.project.service.EmailService;
 
 @RestController
 @RequestMapping("/api/v1/admin")
+@CrossOrigin(origins = "*")
 public class EmailController {
     
     @Autowired
     private EmailService emailService;
 
-    @CrossOrigin("*")
+    
     @PostMapping("/sendEmail")
     public ResponseEntity<Object> sendEmail(@RequestBody EmailDetails emailDetails) {
         return ResponseEntity.ok(emailService.sendSimpleMail(emailDetails));

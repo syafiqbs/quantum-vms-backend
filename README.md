@@ -27,14 +27,18 @@ This system aims to help the vendors, administrators and approvers have an all-i
 7. Spring Web
 
 # Installation
-1. Download and install WAMP/MAMP for Windows/Mac users respectively. Visit https://www.wampserver.com/en/download-wampserver-64bits/ for WAMP and https://www.mamp.info/en/downloads/ for MAMP.
-2. Download MySQL Workbench. Visit https://dev.mysql.com/downloads/workbench/.
-3. Download Visual Studio Code (VSC). Visit https://code.visualstudio.com/download.
-4. Install Java dependencies in VSC and Lombok annotations.
+1. Download and install Java and Maven. Visit https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html for Java and https://maven.apache.org/download.cgi.
+2. Download and install WAMP/MAMP for Windows/Mac users respectively. Visit https://www.wampserver.com/en/download-wampserver-64bits/ for WAMP and https://www.mamp.info/en/downloads/ for MAMP.
+3. Download MySQL Workbench. Visit https://dev.mysql.com/downloads/workbench/.
+4. Download Visual Studio Code (VSC). Visit https://code.visualstudio.com/download.
+5. Install Java dependencies in VSC and Lombok annotations.
 
 # Usage
-1. Start WAMP/MAMP and MySQL Workbench
-2. Clone this project and run the following command in terminal from root directory:
+1. Start WAMP/MAMP and MySQL Workbench.
+2. Create a schema 'oop442project'. 
+3. Clone this project.
+3. Fill up DATASOURCE_PASSWORD in the .env file under the project folder.
+2. Run the following command in terminal from root directory:
 ```
 cd project
 mvn spring-boot:run

@@ -15,31 +15,28 @@ import com.oop442.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1/admin")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @CrossOrigin("*")
     @DeleteMapping("/deleteUser")
     public ResponseEntity<Object> deleteUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.delete(user.getEmail()));
     }
 
-    @CrossOrigin("*")
     @PutMapping("/updateUser")
     public ResponseEntity<Object> updateUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.update(user));
     
     }
 
-    @CrossOrigin("*")
     @GetMapping("/getUser")
     public ResponseEntity<Object> getUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.getUser(user.getEmail()));
     }
 
-    @CrossOrigin("*")
     @GetMapping("/getAllUsers")
     public ResponseEntity<Object> getAllUsers() {
         return ResponseEntity.ok(userService.findAll());
