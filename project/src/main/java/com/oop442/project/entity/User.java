@@ -36,17 +36,17 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private VendorAssessmentForm vendorAssessmentForm;
+    private List<VendorAssessmentForm> vendorAssessmentForm;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private PreEvaluationForm preEvaluationForm;
+    private List<PreEvaluationForm> preEvaluationForm;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private PerformanceEvaluationForm performanceEvaluationForm;
+    private List<PerformanceEvaluationForm> performanceEvaluationForm;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

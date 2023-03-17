@@ -6,14 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oop442.project.entity.PreEvaluationForm;
+import com.oop442.project.entity.User;
 import com.oop442.project.error.PreEvaluationFormNotFoundException;
+import com.oop442.project.error.UserNotFoundException;
 import com.oop442.project.repository.PreEvaluationFormRepository;
+import com.oop442.project.repository.UserRepository;
 
 @Service
 public class PreEvaluationFormServiceImpl implements PreEvaluationFormService{
 
     @Autowired
     private PreEvaluationFormRepository preEvaluationFormRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Override
+    public Object createPreEvaluationForm(String userEmail) {
+        PreEvaluationForm preEvaluationFormToCreate = new PreEvaluationForm();
+        User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new UserNotFoundException(userEmail));
+        preEvaluationFormToCreate.setUser(user);
+        return preEvaluationFormRepository.save(preEvaluationFormToCreate);
+    }
     
     @Override
     public Object getPreEvaluationForm(Long id) {
@@ -42,17 +56,17 @@ public class PreEvaluationFormServiceImpl implements PreEvaluationFormService{
         return preEvaluationFormRepository.save(preEvaluationFormToUpdate);
     }
 
-    // @Override
-    // public Object deletePreEvaluationForm(Long id) {
-    //     PreEvaluationForm preEvaluationFormToDelete = preEvaluationFormRepository.findById(id).orElseThrow(() -> new PreEvaluationFormNotFoundException(id));
-    //     preEvaluationFormRepository.delete(preEvaluationFormToDelete);
-    //     return "Pre Evaluation Form deleted with id: " + id;
-    // }
+    @Override
+    public Object deletePreEvaluationForm(Long id) {
+        PreEvaluationForm preEvaluationFormToDelete = preEvaluationFormRepository.findById(id).orElseThrow(() -> new PreEvaluationFormNotFoundException(id));
+        preEvaluationFormRepository.delete(preEvaluationFormToDelete);
+        return "Pre Evaluation Form deleted with id: " + id;
+    }
 
     @Override
-    public Object approvePreEvaluationForm(Long id) {
+    public Object approvePreEvaluationForm(Long id, String status) {
         PreEvaluationForm preEvaluationFormToApprove = preEvaluationFormRepository.findById(id).orElseThrow(() -> new PreEvaluationFormNotFoundException(id));
-        preEvaluationFormToApprove.setPreEvaluationResults("Approved");
+        preEvaluationFormToApprove.setPreEvaluationResults(status);
         return preEvaluationFormRepository.save(preEvaluationFormToApprove);
     }
     

@@ -1,11 +1,8 @@
 package com.oop442.project.auth;
 
 import com.oop442.project.config.JwtService;
-import com.oop442.project.entity.PerformanceEvaluationForm;
-import com.oop442.project.entity.PreEvaluationForm;
 import com.oop442.project.entity.Role;
 import com.oop442.project.entity.User;
-import com.oop442.project.entity.VendorAssessmentForm;
 import com.oop442.project.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -34,20 +31,10 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
-        var vendorAssessmentForm = new VendorAssessmentForm();
-
-        var performanceEvaluationForm = new PerformanceEvaluationForm();
-        
-        var preEvaluationForm = new PreEvaluationForm();
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
                 throw new IllegalStateException("Email already taken");
         }
-        preEvaluationForm.setUser(user);
-        performanceEvaluationForm.setUser(user);
-        vendorAssessmentForm.setUser(user);
-        user.setPerformanceEvaluationForm(performanceEvaluationForm);
-        user.setPreEvaluationForm(preEvaluationForm);
-        user.setVendorAssessmentForm(vendorAssessmentForm);
+        
         userRepository.save(user);
 
         var jwtToken = jwtService.generateToken(user);

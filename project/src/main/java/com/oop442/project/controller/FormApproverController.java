@@ -3,10 +3,12 @@ package com.oop442.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oop442.project.entity.PreEvaluationForm;
 import com.oop442.project.service.PerformanceEvaluationFormService;
 import com.oop442.project.service.PreEvaluationFormService;
 import com.oop442.project.service.VendorAssessmentFormService;
@@ -38,8 +40,8 @@ public class FormApproverController {
     
     
     @PostMapping("/approvePreEvaluationForm/{id}")
-    public Object approvePreEvaluationForm(@PathVariable Long id) {
-        return preEvaluationFormService.approvePreEvaluationForm(id);
+    public Object approvePreEvaluationForm(@PathVariable Long id, @RequestBody PreEvaluationForm preEvaluationForm) {
+        return preEvaluationFormService.approvePreEvaluationForm(id, preEvaluationForm.getPreEvaluationResults());
     }
 
 }
