@@ -1,7 +1,5 @@
 package com.oop442.project.entity;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
@@ -23,7 +21,8 @@ public class PreEvaluationForm{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(mappedBy = "preEvaluationForm")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_email", referencedColumnName = "email")
     @JsonBackReference
     private User user;
     

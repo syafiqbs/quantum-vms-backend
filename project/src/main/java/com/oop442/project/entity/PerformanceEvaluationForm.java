@@ -20,7 +20,8 @@ public class PerformanceEvaluationForm{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToOne(mappedBy = "performanceEvaluationForm")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_email", referencedColumnName = "email")
     @JsonBackReference
     private User user;
 

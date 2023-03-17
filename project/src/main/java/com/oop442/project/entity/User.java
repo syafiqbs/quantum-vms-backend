@@ -36,18 +36,15 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vendor_assessment_form_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user")
     @JsonManagedReference
     private VendorAssessmentForm vendorAssessmentForm;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pre_evaluation_form_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user")
     @JsonManagedReference
     private PreEvaluationForm preEvaluationForm;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "performance_evaluation_form_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user")
     @JsonManagedReference
     private PerformanceEvaluationForm performanceEvaluationForm;
 
