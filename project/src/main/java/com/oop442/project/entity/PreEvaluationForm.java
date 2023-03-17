@@ -21,7 +21,7 @@ public class PreEvaluationForm{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_email", referencedColumnName = "email")
     @JsonBackReference
     private User user;

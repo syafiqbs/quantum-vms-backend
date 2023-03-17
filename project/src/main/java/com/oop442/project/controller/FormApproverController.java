@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oop442.project.entity.PerformanceEvaluationForm;
 import com.oop442.project.entity.PreEvaluationForm;
 import com.oop442.project.service.PerformanceEvaluationFormService;
 import com.oop442.project.service.PreEvaluationFormService;
@@ -29,8 +30,8 @@ public class FormApproverController {
 
 
     @PostMapping("/approvePerformanceEvaluationForm/{id}")
-    public Object approvePerformanceEvaluationForm(@PathVariable Long id) {
-        return performanceEvaluationFormService.approvePerformanceEvaluationForm(id);
+    public Object approvePerformanceEvaluationForm(@PathVariable Long id, @RequestBody PerformanceEvaluationForm performanceEvaluationForm) {
+        return performanceEvaluationFormService.approvePerformanceEvaluationForm(id, performanceEvaluationForm.getPerformanceEvaluationResults());
     }
 
     @PostMapping("/approveVendorAssessmentForm/{id}")
