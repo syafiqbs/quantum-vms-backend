@@ -3,6 +3,7 @@ package com.oop442.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oop442.project.entity.Role;
 import com.oop442.project.entity.User;
 import com.oop442.project.error.UserNotFoundException;
 
@@ -18,7 +19,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUser(String email) {
         return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
-        
+    }
+
+    @Override
+    public User getAdmin(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
     }
 
     @Override

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oop442.project.entity.PerformanceEvaluationForm;
 import com.oop442.project.entity.PreEvaluationForm;
+import com.oop442.project.entity.VendorAssessmentForm;
 import com.oop442.project.service.PerformanceEvaluationFormService;
 import com.oop442.project.service.PreEvaluationFormService;
 import com.oop442.project.service.VendorAssessmentFormService;
@@ -35,8 +36,8 @@ public class FormApproverController {
     }
 
     @PostMapping("/approveVendorAssessmentForm/{id}")
-    public Object approveVendorAssessmentForm(@PathVariable Long id) {
-        return vendorAssessmentFormService.approveVendorAssessmentForm(id);
+    public Object approveVendorAssessmentForm(@PathVariable Long id, @RequestBody VendorAssessmentForm vendorAssessmentForm) {
+        return vendorAssessmentFormService.approveVendorAssessmentForm(id, vendorAssessmentForm.getVendorAssessmentResults());
     }
     
     

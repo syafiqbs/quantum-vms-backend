@@ -14,30 +14,35 @@ import com.oop442.project.entity.User;
 import com.oop442.project.service.UserService;
 
 @RestController
-@RequestMapping("/api/v1/admin")
+@RequestMapping("/api/v1")
 @CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @DeleteMapping("/deleteUser")
+    @DeleteMapping("/admin/deleteUser")
     public ResponseEntity<Object> deleteUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.delete(user.getEmail()));
     }
 
-    @PutMapping("/updateUser")
+    @PutMapping("/admin/updateUser")
     public ResponseEntity<Object> updateUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.update(user));
     
     }
 
-    @GetMapping("/getUser")
+    @GetMapping("/vendor/getUser")
     public ResponseEntity<Object> getUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.getUser(user.getEmail()));
     }
 
-    @GetMapping("/getAllUsers")
+    @GetMapping("/admin/getAdmin")
+    public ResponseEntity<Object> getAdmin(@RequestBody User user) {
+        return ResponseEntity.ok(userService.getAdmin(user.getEmail()));
+    }
+
+    @GetMapping("/admin/getAllUsers")
     public ResponseEntity<Object> getAllUsers() {
         return ResponseEntity.ok(userService.findAll());
     }

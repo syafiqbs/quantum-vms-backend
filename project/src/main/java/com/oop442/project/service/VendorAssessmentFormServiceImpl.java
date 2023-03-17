@@ -5,8 +5,11 @@ import java.lang.reflect.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oop442.project.entity.User;
 import com.oop442.project.entity.VendorAssessmentForm;
+import com.oop442.project.error.UserNotFoundException;
 import com.oop442.project.error.VendorAssessmentFormNotFoundException;
+import com.oop442.project.repository.UserRepository;
 import com.oop442.project.repository.VendorAssessmentFormRepository;
 
 @Service
@@ -14,6 +17,17 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
 
     @Autowired
     private VendorAssessmentFormRepository vendorAssessmentFormRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public Object createVendorAssessmentForm(String userEmail) {
+        VendorAssessmentForm vendorAssessmentForm = new VendorAssessmentForm();
+        User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new UserNotFoundException(userEmail));
+        vendorAssessmentForm.setUser(user);
+        return vendorAssessmentFormRepository.save(vendorAssessmentForm);
+    }
 
     @Override
     public VendorAssessmentForm getVendorAssessmentForm(Long id) {
@@ -42,20 +56,18 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
         return vendorAssessmentFormRepository.save(vendorAssessmentFormToUpdate);
     }
 
-    // @Override
-    // public Object deleteVendorAssessmentForm(Long id) {
-    //     VendorAssessmentForm vendorAssessmentFormToDelete = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
-    //     vendorAssessmentFormRepository.delete(vendorAssessmentFormToDelete);
-    //     return "VendorAssessmentForm deleted with id: " + id;
-    // }
+    @Override
+    public Object deleteVendorAssessmentForm(Long id) {
+        VendorAssessmentForm vendorAssessmentFormToDelete = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
+        vendorAssessmentFormRepository.delete(vendorAssessmentFormToDelete);
+        return "VendorAssessmentForm deleted with id: " + id;
+    }
 
     @Override
-    public Object approveVendorAssessmentForm(Long id) {
+    public Object approveVendorAssessmentForm(Long id, String status) {
         VendorAssessmentForm vendorAssessmentFormToApprove = vendorAssessmentFormRepository.findById(id).orElseThrow(() -> new VendorAssessmentFormNotFoundException(id));
-        vendorAssessmentFormToApprove.setVendorAssessmentResults("Approved");
+        vendorAssessmentFormToApprove.setVendorAssessmentResults(status);
         return vendorAssessmentFormRepository.save(vendorAssessmentFormToApprove);
     }
 
-    
-    
 }

@@ -3,12 +3,15 @@ package com.oop442.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oop442.project.entity.User;
 import com.oop442.project.entity.VendorAssessmentForm;
 import com.oop442.project.service.VendorAssessmentFormService;
 
@@ -19,6 +22,11 @@ public class VendorAssessmentFormController {
     
     @Autowired
     private VendorAssessmentFormService vendorAssessmentFormService;
+
+    @PostMapping("/createVendorAssessmentForm")
+    public ResponseEntity<Object> createVendorAssessmentForm(@RequestBody User user) {
+        return ResponseEntity.ok(vendorAssessmentFormService.createVendorAssessmentForm(user.getEmail()));
+    }
 
     @GetMapping("/getVendorAssessmentForm")
     public ResponseEntity<Object> getVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
@@ -35,8 +43,8 @@ public class VendorAssessmentFormController {
         return ResponseEntity.ok(vendorAssessmentFormService.updateVendorAssessmentForm(vendorAssessmentForm));
     }
 
-    // @DeleteMapping("/deleteVendorAssessmentForm")
-    // public ResponseEntity<Object> deleteVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
-    //     return ResponseEntity.ok(vendorAssessmentFormService.deleteVendorAssessmentForm(vendorAssessmentForm.getId()));
-    // }
+    @DeleteMapping("/deleteVendorAssessmentForm")
+    public ResponseEntity<Object> deleteVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
+        return ResponseEntity.ok(vendorAssessmentFormService.deleteVendorAssessmentForm(vendorAssessmentForm.getId()));
+    }
 }
