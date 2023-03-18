@@ -34,7 +34,7 @@ public class PreEvaluationFormController {
         return ResponseEntity.ok(preEvaluationFormService.getPreEvaluationForm(preEvaluationForm.getId()));
     }
 
-    @PostMapping("/getAllPreEvaluationForms")
+    @GetMapping("/getAllPreEvaluationForms")
     public ResponseEntity<Object> getAllPreEvaluationForms() {
         return ResponseEntity.ok(preEvaluationFormService.getAllPreEvaluationForms());
     }

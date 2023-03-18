@@ -32,7 +32,7 @@ public class PerformanceEvaluationFormController {
         return ResponseEntity.ok(performanceEvaluationFormService.getPerformanceEvaluationForm(performanceEvaluationForm.getId()));
     }
 
-    @PostMapping("/getPerformanceAllEvaluationForms")
+    @GetMapping("/getPerformanceAllEvaluationForms")
     public ResponseEntity<Object> getPerformanceAllEvaluationForms() {
         return ResponseEntity.ok(performanceEvaluationFormService.getPerformanceAllEvaluationForms());
     }
