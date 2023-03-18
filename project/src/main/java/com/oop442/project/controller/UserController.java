@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +33,12 @@ public class UserController {
     
     }
 
-    @GetMapping("/vendor/getUser")
+    @PostMapping("/vendor/getUser")
     public ResponseEntity<Object> getUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.getUser(user.getEmail()));
     }
 
-    @GetMapping("/admin/getAdmin")
+    @PostMapping("/admin/getAdmin")
     public ResponseEntity<Object> getAdmin(@RequestBody User user) {
         return ResponseEntity.ok(userService.getAdmin(user.getEmail()));
     }

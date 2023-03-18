@@ -27,12 +27,12 @@ public class PerformanceEvaluationFormController {
     public ResponseEntity<Object> createPerformanceEvaluationForm(@RequestBody User user) {
         return ResponseEntity.ok(performanceEvaluationFormService.createPerformanceEvaluationForm(user.getEmail()));
     }
-    @GetMapping("/getPerformanceEvaluationForm")
+    @PostMapping("/getPerformanceEvaluationForm")
     public ResponseEntity<Object> getPerformanceEvaluationForm(@RequestBody PerformanceEvaluationForm performanceEvaluationForm) {
         return ResponseEntity.ok(performanceEvaluationFormService.getPerformanceEvaluationForm(performanceEvaluationForm.getId()));
     }
 
-    @GetMapping("/getPerformanceAllEvaluationForms")
+    @PostMapping("/getPerformanceAllEvaluationForms")
     public ResponseEntity<Object> getPerformanceAllEvaluationForms() {
         return ResponseEntity.ok(performanceEvaluationFormService.getPerformanceAllEvaluationForms());
     }

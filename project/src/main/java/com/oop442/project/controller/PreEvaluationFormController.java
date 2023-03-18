@@ -29,12 +29,12 @@ public class PreEvaluationFormController {
         return ResponseEntity.ok(preEvaluationFormService.createPreEvaluationForm(user.getEmail()));
     }
 
-    @GetMapping("/getPreEvaluationForm")
+    @PostMapping("/getPreEvaluationForm")
     public ResponseEntity<Object> getPreEvaluationForm(@RequestBody PreEvaluationForm preEvaluationForm) {
         return ResponseEntity.ok(preEvaluationFormService.getPreEvaluationForm(preEvaluationForm.getId()));
     }
 
-    @GetMapping("/getAllPreEvaluationForms")
+    @PostMapping("/getAllPreEvaluationForms")
     public ResponseEntity<Object> getAllPreEvaluationForms() {
         return ResponseEntity.ok(preEvaluationFormService.getAllPreEvaluationForms());
     }

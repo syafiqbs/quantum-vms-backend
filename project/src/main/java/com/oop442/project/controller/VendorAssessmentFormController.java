@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,12 +27,12 @@ public class VendorAssessmentFormController {
         return ResponseEntity.ok(vendorAssessmentFormService.createVendorAssessmentForm(user.getEmail()));
     }
 
-    @GetMapping("/getVendorAssessmentForm")
+    @PostMapping("/getVendorAssessmentForm")
     public ResponseEntity<Object> getVendorAssessmentForm(@RequestBody VendorAssessmentForm vendorAssessmentForm) {
         return ResponseEntity.ok(vendorAssessmentFormService.getVendorAssessmentForm(vendorAssessmentForm.getId()));
     }
 
-    @GetMapping("/getVendorAllAssessmentForms")
+    @PostMapping("/getVendorAllAssessmentForms")
     public ResponseEntity<Object> getVendorAllAssessmentForms() {
         return ResponseEntity.ok(vendorAssessmentFormService.getVendorAllAssessmentForms());
     }
