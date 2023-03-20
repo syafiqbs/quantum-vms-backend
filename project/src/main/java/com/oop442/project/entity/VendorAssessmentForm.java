@@ -52,7 +52,8 @@ public class VendorAssessmentForm{
     private String contactPersonDesignation2;
 
     //Evaluation
-    private String ciso9001;
+    private String evaluation
+    private String iso9001;
     private String accreditationLaboratory;
     private String projectCertification;
     private String siteEvaluationResults;
