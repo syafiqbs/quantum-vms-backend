@@ -52,14 +52,24 @@ public class VendorAssessmentForm{
     private String contactPersonDesignation2;
 
     //Evaluation
-    private String evaluation;
+    private String ciso9001;
+    private String accreditationLaboratory;
+    private String projectCertification;
     private String siteEvaluationResults;
     private String sampleProductEvaluation;
     private String resultFirstDeal;
     private String trackRecord;
     private String others;
 
+    //Vendor Assessment Results
+    private String evaluatedBy;
+    private String evaluatorSignature;
+    private String approvedBy;
+    private String approverSignature;
+    private String effectiveDate;
+    
     @Builder.Default
     private String vendorAssessmentResults = "Draft";
+
 
 }
