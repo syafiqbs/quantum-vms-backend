@@ -1,5 +1,7 @@
 package com.oop442.project.entity;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
@@ -75,6 +77,14 @@ public class PerformanceEvaluationForm{
     private String comments;
     private String totalScore;
 
+    //Evaluation 
     @Builder.Default
     private String performanceEvaluationResults = "Draft";
+    private String evaluationComments;
+
+    //Date
+    @Builder.Default
+    private Date dateCreated = new Date();
+    private String dateModified;
+    private String deadline;
 }

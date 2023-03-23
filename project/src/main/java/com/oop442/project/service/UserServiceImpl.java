@@ -3,7 +3,6 @@ package com.oop442.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.oop442.project.entity.Role;
 import com.oop442.project.entity.User;
 import com.oop442.project.error.UserNotFoundException;
 

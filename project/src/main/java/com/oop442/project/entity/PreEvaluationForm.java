@@ -1,5 +1,7 @@
 package com.oop442.project.entity;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
@@ -68,8 +70,15 @@ public class PreEvaluationForm{
     private String acknowledgementDate;
     private String acknowledgementSignature;
 
-
+    //Evaluation results
     @Builder.Default
     private String preEvaluationResults = "Draft";
-    
-}
+    private String evaluationComments;
+
+    //Date
+    @Builder.Default
+    private Date dateCreated = new Date();
+    private String dateModified;
+    private String deadline;
+}   
+

@@ -1,5 +1,7 @@
 package com.oop442.project.entity;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
@@ -69,8 +71,13 @@ public class VendorAssessmentForm{
     private String approverSignature;
     private String effectiveDate;
     
+    //Evaluation Results
     @Builder.Default
     private String vendorAssessmentResults = "Draft";
+    private String evaluationComments;
 
-
+    @Builder.Default
+    private Date dateCreated = new Date();
+    private String dateModified;
+    private String deadline;
 }
