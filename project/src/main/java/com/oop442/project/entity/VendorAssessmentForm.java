@@ -79,5 +79,5 @@ public class VendorAssessmentForm{
     @Builder.Default
     private Date dateCreated = new Date();
     private String dateModified;
-    private String deadline;
+    private Date deadline;
 }

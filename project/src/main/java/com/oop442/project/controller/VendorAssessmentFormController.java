@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,9 +24,9 @@ public class VendorAssessmentFormController {
     @Autowired
     private VendorAssessmentFormService vendorAssessmentFormService;
 
-    @PostMapping("/createVendorAssessmentForm")
-    public ResponseEntity<Object> createVendorAssessmentForm(@RequestBody User user) {
-        return ResponseEntity.ok(vendorAssessmentFormService.createVendorAssessmentForm(user.getEmail()));
+    @PostMapping("/createVendorAssessmentForm/{deadline}")
+    public ResponseEntity<Object> createVendorAssessmentForm(@RequestBody User user, @PathVariable Integer deadline) {
+        return ResponseEntity.ok(vendorAssessmentFormService.createVendorAssessmentForm(user.getEmail(), deadline));
     }
 
     @PostMapping("/getVendorAssessmentForm")

@@ -4,7 +4,7 @@ import com.oop442.project.entity.PerformanceEvaluationForm;
 
 public interface PerformanceEvaluationFormService {
 
-    Object createPerformanceEvaluationForm(String userEmail);
+    Object createPerformanceEvaluationForm(String userEmail, Integer deadline);
 
     PerformanceEvaluationForm getPerformanceEvaluationForm(Long id);
 

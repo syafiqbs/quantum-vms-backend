@@ -1,6 +1,9 @@
 package com.oop442.project.service;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,10 +25,15 @@ public class VendorAssessmentFormServiceImpl implements VendorAssessmentFormServ
     private UserRepository userRepository;
 
     @Override
-    public Object createVendorAssessmentForm(String userEmail) {
+    public Object createVendorAssessmentForm(String userEmail, Integer deadline) {
         VendorAssessmentForm vendorAssessmentForm = new VendorAssessmentForm();
         User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new UserNotFoundException(userEmail));
         vendorAssessmentForm.setUser(user);
+
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate localDate = LocalDate.now().plusDays(deadline);
+        Date date = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
+        vendorAssessmentForm.setDeadline(date);
         return vendorAssessmentFormRepository.save(vendorAssessmentForm);
     }
 

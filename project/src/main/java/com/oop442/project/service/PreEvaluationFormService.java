@@ -4,7 +4,7 @@ import com.oop442.project.entity.PreEvaluationForm;
 
 public interface PreEvaluationFormService {
 
-    Object createPreEvaluationForm(String userEmail);
+    Object createPreEvaluationForm(String userEmail, Integer deadline);
 
     Object getPreEvaluationForm(Long id);
 

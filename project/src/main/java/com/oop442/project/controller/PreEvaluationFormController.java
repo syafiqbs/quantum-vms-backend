@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,9 +24,9 @@ public class PreEvaluationFormController {
     @Autowired
     private PreEvaluationFormService preEvaluationFormService;
 
-    @PostMapping("/createPreEvaluationForm")
-    public ResponseEntity<Object> createPreEvaluationForm(@RequestBody User user) {
-        return ResponseEntity.ok(preEvaluationFormService.createPreEvaluationForm(user.getEmail()));
+    @PostMapping("/createPreEvaluationForm/{deadline}")
+    public ResponseEntity<Object> createPreEvaluationForm(@RequestBody User user, @PathVariable Integer deadline) {
+        return ResponseEntity.ok(preEvaluationFormService.createPreEvaluationForm(user.getEmail(), deadline));
     }
 
     @PostMapping("/getPreEvaluationForm")

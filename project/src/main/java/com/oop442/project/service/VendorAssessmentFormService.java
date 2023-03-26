@@ -4,7 +4,7 @@ import com.oop442.project.entity.VendorAssessmentForm;
 
 public interface VendorAssessmentFormService {
 
-    Object createVendorAssessmentForm(String userEmail);
+    Object createVendorAssessmentForm(String userEmail, Integer deadline);
 
     VendorAssessmentForm getVendorAssessmentForm(Long id);
 
