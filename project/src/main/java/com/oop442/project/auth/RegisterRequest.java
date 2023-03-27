@@ -15,4 +15,7 @@ public class RegisterRequest {
     private String email;
     private String password;
     private String contactNumber;
+    private String companyName;
+    private String gstRegistrationNumber;
+    private String natureOfBusiness;
 }

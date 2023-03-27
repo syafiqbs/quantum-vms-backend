@@ -28,6 +28,9 @@ public class AuthenticationService {
                 .name(request.getName())
                 .contactNumber(request.getContactNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .companyName(request.getCompanyName())
+                .gstRegistrationNumber(request.getGstRegistrationNumber())
+                .natureOfBusiness(request.getNatureOfBusiness())
                 .role(Role.USER)
                 .build();
 

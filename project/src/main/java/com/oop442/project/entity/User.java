@@ -29,6 +29,10 @@ public class User implements UserDetails {
     private String password;
     private String name;
     private String contactNumber;
+    private String companyName;
+    private String gstRegistrationNumber;
+    private String natureOfBusiness;
+    
     @Builder.Default
     private Date dateCreated = new Date();
     
