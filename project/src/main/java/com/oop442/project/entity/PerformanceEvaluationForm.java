@@ -72,10 +72,19 @@ public class PerformanceEvaluationForm{
     private String storehouseKeepingCleanliness;
     private String quarterhouseKeepingCleanliness;
     private String partFiveScore;
+    
+    //Performance Evaluator & Approver
+    private String evaluatedBy;
+    private String evaluatorSignature;
+    private String dateEvaluated;
+    private String approvedBy;
+    private String approverSignature;
+    private String dateApproved;
 
     //footer
     private String comments;
     private String totalScore;
+    private String overallPerformanceStandard;
 
     //Evaluation 
     @Builder.Default
