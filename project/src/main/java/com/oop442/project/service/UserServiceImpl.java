@@ -1,5 +1,7 @@
 package com.oop442.project.service;
 
+import java.lang.reflect.Field;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +35,22 @@ public class UserServiceImpl implements UserService{
     @Override
     public User update(User user) {
         User userToUpdate = userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UserNotFoundException(user.getEmail()));
-        userToUpdate.setEmail(user.getEmail());
-        userToUpdate.setName(user.getName());
-        userToUpdate.setContactNumber(user.getContactNumber());
-        userRepository.save(userToUpdate);
-        return userToUpdate;
+        // userToUpdate.setEmail(user.getEmail());
+        // userToUpdate.setName(user.getName());
+        // userToUpdate.setContactNumber(user.getContactNumber());
+        Field[] fields = User.class.getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                if (field.get(user) != null) {
+                    field.set(userToUpdate, field.get(user));
+                }
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                throw new RuntimeException("Error while updating User Details");
+            }
+        }
+        
+        return userRepository.save(userToUpdate);
         
     }
 
