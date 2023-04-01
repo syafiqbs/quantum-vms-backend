@@ -37,8 +37,8 @@ This system aims to help the vendors, administrators and approvers have an all-i
 1. Start WAMP/MAMP and MySQL Workbench.
 2. Create a schema 'oop442project'. 
 3. Clone this project.
-3. Fill up DATASOURCE_PASSWORD in the .env file under the project folder.
-2. Run the following command in terminal from root directory:
+4. Fill up DATASOURCE_PASSWORD, GMAIL_USERNAME and GMAIL_PASSWORD in the .env file under the project folder. Visit https://support.google.com/accounts/answer/185833?hl=en to learn how to sign in with app passwords in Google.
+5. Run the following command in terminal from root directory:
 ```
 cd project
 mvn spring-boot:run
